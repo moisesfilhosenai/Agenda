@@ -42,6 +42,8 @@ public class ContatoAdapter
     public void onBindViewHolder(@NonNull ContatoViewHolder holder, int position) {
         Contato contato = contatos.get(position);
         holder.tvNome.setText(contato.getNome());
+        holder.tvFone.setText(contato.getFone());
+        holder.tvEmail.setText(contato.getEmail());
     }
 
     // Conta a qtde de itens da lista
@@ -54,12 +56,16 @@ public class ContatoAdapter
             extends RecyclerView.ViewHolder {
 
         TextView tvNome;
+        TextView tvFone;
+        TextView tvEmail;
 
         // Método para criar novos View Holder
         // Chamado pelo Layout Manager
         public ContatoViewHolder(@NonNull View itemView) {
             super(itemView);
             tvNome = itemView.findViewById(R.id.tvNome);
+            tvFone = itemView.findViewById(R.id.tvFone);
+            tvEmail = itemView.findViewById(R.id.tvEmail);
         }
     }
 }
