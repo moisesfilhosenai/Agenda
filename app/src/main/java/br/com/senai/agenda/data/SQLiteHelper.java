@@ -15,8 +15,8 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     public static final String CREATE_TABLE = "CREATE TABLE " + DATABASE_TABLE + "("+
             COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             COL_NAME + " TEXT NOT NULL, " +
-            COL_EMAIL + "TEXT, " +
-            COL_FONE + "TEXT NOT NULL)";
+            COL_EMAIL + " TEXT, " +
+            COL_FONE + " TEXT NOT NULL)";
 
     public SQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

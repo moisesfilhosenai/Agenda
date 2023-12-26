@@ -1,10 +1,16 @@
 package br.com.senai.agenda.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +20,7 @@ import br.com.senai.agenda.adapter.ContatoAdapter;
 import br.com.senai.agenda.data.ContatoDao;
 import br.com.senai.agenda.model.Contato;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private RecyclerView recyclerView;
     private List<Contato> contatos = new ArrayList<>();
@@ -34,6 +40,25 @@ public class MainActivity extends AppCompatActivity {
         buscarContatos();
         contatoAdapter = new ContatoAdapter(contatos, this);
         recyclerView.setAdapter(contatoAdapter);
+
+        Toolbar toolbar = findViewById(R.id.toolbarHome);
+        setSupportActionBar(toolbar);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_home, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.navegar_cadastro) {
+            // navegar para tela de cadastro
+            Intent telaCadastro = new Intent(this, DetalheActivity.class);
+            startActivity(telaCadastro);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void buscarContatos() {
@@ -49,4 +74,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onClick(View v) {
+
+    }
 }
